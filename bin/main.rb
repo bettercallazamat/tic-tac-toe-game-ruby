@@ -12,72 +12,68 @@ puts "What is name of the second player?"
 player2 = gets.chomp
 
 win_conditions = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
-    [1,4,7],
-    [2,5,8],
-    [3,6,9],
-    [1,5,9],
-    [3,5,7]
+  [1,2,3],
+  [4,5,6],
+  [7,8,9],
+  [1,4,7],
+  [2,5,8],
+  [3,6,9],
+  [1,5,9],
+  [3,5,7]
 ]
 
 p1_score = 0
 p2_score = 0
 loop do
   # create new board
-    p1 = []
-    p2 = []
-    p1_wins = false
-    p2_wins = false
-    win_met = false
+  p1 = []
+  p2 = []
+  p1_wins = false
+  p2_wins = false
+  win_met = false
+  loop do
     loop do
-      loop do
-        puts "#{player1}, what number you choose?"
-        move = gets.chomp.to_i
-        if p1.include?(move) || p2.include?(move)
-          puts "Wrong move!"
-        else
-          p1.push(move)
-          break
-        end
+      puts "#{player1}, what number you choose?"
+      move = gets.chomp.to_i
+      if p1.include?(move) || p2.include?(move)
+        puts "Wrong move!"
+      else
+        p1.push(move)
+        break
       end
-        #store choosen number in board array
-        #if board is full its draw
-        win_conditions.each{|x| win_met = true if x === p1.sort}
-        if win_met #if win condition is met we break loop and increment score of player1
-          puts "#{player1}, wins!"
-          p1_score += 1
-          p1_wins = true
-          break
-        elsif (p1.length + p2.length) == 9
-          puts "It's a draw!"
-          break
-        end
-
-        loop do
-          puts "#{player2}, what number you choose?"
-          move = gets.chomp.to_i
-          if p1.include?(move) || p2.include?(move)
-            puts "Wrong move!"
-          else
-            p2.push(move)
-            break
-          end
-        end
-        #store choosen number in board array
-        #if board is full its draw
-        win_conditions.each{|x| win_met = true if x === p2.sort}
-        if win_met #if win condition is met we break loop and increment score of player1
-          puts "#{player2}, wins!"
-          p2_score += 1
-          p2_wins = true
-          break
-        elsif (p1.length + p2.length) == 9
-          puts "It's a draw!"
-          break
-        end
     end
+    win_conditions.each{|x| win_met = true if x === p1.sort}
+    if win_met #if win condition is met we break loop and increment score of player
+      puts "#{player1}, wins!"
+      p1_score += 1
+      p1_wins = true
+      break
+    elsif (p1.length + p2.length) == 9 #if board is full its draw
+      puts "It's a draw!"
+      break
+    end
+
+    loop do
+      puts "#{player2}, what number you choose?"
+      move = gets.chomp.to_i
+      if p1.include?(move) || p2.include?(move)
+        puts "Wrong move!"
+      else
+        p2.push(move)
+        break
+      end
+    end
+    win_conditions.each{|x| win_met = true if x === p2.sort}
+    if win_met #if win condition is met we break loop and increment score of player
+      puts "#{player2}, wins!"
+      p2_score += 1
+      p2_wins = true
+      break
+    elsif (p1.length + p2.length) == 9 #if board is full its draw
+      puts "It's a draw!"
+      break
+    end
+  end
 
 if p1_wins
   puts "#{player1} wins, score is #{p1_score}:#{p2_score}, do you want to play again? y/n"
