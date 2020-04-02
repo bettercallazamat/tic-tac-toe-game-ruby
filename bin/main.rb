@@ -2,6 +2,8 @@
 # rubocop:disable Metrics/BlockLength
 # rubocop:disable Layout/LineLength
 
+require '../lib/player.rb'
+
 puts 'The goal of tic-tac-toe is to be the first player to get three in a row on a 3-by-3 grid'
 puts 'The first player who is playing X always goes first.'
 puts 'Players alternate placing Xs and Os on the board until either player has three in a row, horizontally, vertically, or diagonally or until all squares on the grid are filled.'
