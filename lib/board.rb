@@ -2,7 +2,7 @@ class Board
   attr_reader :board
 
   def initialize
-    @board = [[0,0]]
+    @board = [[0, 0]]
     @win_conditions = [
       [[1, 1], [1, 2], [1, 3]],
       [[1, 4], [1, 5], [1, 6]],
@@ -41,9 +41,7 @@ class Board
     win = false
     @win_conditions.each do |x|
       similar = @board & x
-      if similar.length == 3
-        win = true
-      end
+      win = true if similar.length == 3
     end
     win
   end
