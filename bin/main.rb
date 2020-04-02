@@ -84,6 +84,5 @@ else
 end
 play_again = gets.chomp
 break if play_again == "n"
-#if answer is "y" then we create start loop again
 #if answer is "n" then we break loop and say Goodbye.
 end
