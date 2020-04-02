@@ -18,10 +18,10 @@ puts 'What is name of the first player?'
 player1 = Player.new(gets.chomp)
 puts 'What is name of the second player?'
 player2 = Player.new(gets.chomp)
-winner = nil
 
 loop do
   board = Board.new
+  winner = nil
   loop do
     loop do
       puts "#{player1.name}, what number you choose?"
@@ -65,9 +65,9 @@ loop do
   end
 
   if winner.nil?
-    puts "The current score is #{p1_score}:#{p2_score}, do you want to play again? y/n"
+    puts "The current score is #{player1.score}:#{player2.score}, do you want to play again? y/n"
   else
-    puts "#{winner} wins, score is #{p1_score}:#{p2_score}, do you want to play again? y/n"
+    puts "#{winner} wins, score is #{player1.score}:#{player2.score}, do you want to play again? y/n"
   end
   play_again = gets.chomp
   break if play_again == 'n'

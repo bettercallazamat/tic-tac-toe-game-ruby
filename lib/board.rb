@@ -39,7 +39,12 @@ class Board
 
   def win?
     win = false
-    @win_conditions.each { |x| win = true if @board - x == @board.length - 3 }
+    @win_conditions.each do |x|
+      similar = @board & x
+      if similar.length == 3
+        win = true
+      end
+    end
     win
   end
 
