@@ -2,32 +2,33 @@ class Board
   attr_reader :board
 
   def initialize
-    @board = []
+    @board = [[0,0]]
+    @win_conditions = [
+      [[1, 1], [1, 2], [1, 3]],
+      [[1, 4], [1, 5], [1, 6]],
+      [[1, 7], [1, 8], [1, 9]],
+      [[1, 1], [1, 4], [1, 7]],
+      [[1, 2], [1, 5], [1, 8]],
+      [[1, 3], [1, 6], [1, 9]],
+      [[1, 1], [1, 5], [1, 9]],
+      [[1, 3], [1, 5], [1, 7]],
+      [[2, 1], [2, 2], [2, 3]],
+      [[2, 4], [2, 5], [2, 6]],
+      [[2, 7], [2, 8], [2, 9]],
+      [[2, 1], [2, 4], [2, 7]],
+      [[2, 2], [2, 5], [2, 8]],
+      [[2, 3], [2, 6], [2, 9]],
+      [[2, 1], [2, 5], [2, 9]],
+      [[2, 3], [2, 5], [2, 7]]
+    ]
   end
 
-  @@win_conditions = [
-    [[1, 1], [1, 2], [1, 3]],
-    [[1, 4], [1, 5], [1, 6]],
-    [[1, 7], [1, 8], [1, 9]],
-    [[1, 1], [1, 4], [1, 7]],
-    [[1, 2], [1, 5], [1, 8]],
-    [[1, 3], [1, 6], [1, 9]],
-    [[1, 1], [1, 5], [1, 9]],
-    [[1, 3], [1, 5], [1, 7]],
-    [[2, 1], [2, 2], [2, 3]],
-    [[2, 4], [2, 5], [2, 6]],
-    [[2, 7], [2, 8], [2, 9]],
-    [[2, 1], [2, 4], [2, 7]],
-    [[2, 2], [2, 5], [2, 8]],
-    [[2, 3], [2, 6], [2, 9]],
-    [[2, 1], [2, 5], [2, 9]],
-    [[2, 3], [2, 5], [2, 7]]
-  ]
-
   def valid?(input)
-    valid = false
+    valid = true
     if (1..9).include?(input[1])
-      @board.each { |x| valid = true if x[1] != input[1] }
+      @board.each { |x| valid = false unless x[1] != input[1] }
+    else
+      valid = false
     end
     valid
   end
@@ -37,12 +38,13 @@ class Board
   end
 
   def win?
-    @@win_conditions.each { |x| return true if board & x == board.length - 3 }
-    false
+    win = false
+    @win_conditions.each { |x| win = true if @board - x == @board.length - 3 }
+    win
   end
 
   def draw?
-    return true if @board.length == 9
+    return true if @board.length == 10
 
     false
   end
