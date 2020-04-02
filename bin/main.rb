@@ -1,5 +1,5 @@
 puts "The goal of tic-tac-toe is to be the first player to get three in a row on a 3-by-3 grid"
-puts "The first player who is playing "X" always goes first."
+puts "The first player who is playing X always goes first."
 puts "Players alternate placing Xs and Os on the board until either player has three in a row, horizontally, vertically, or diagonally or until all squares on the grid are filled. If a player is able to draw three Xs or three Os in a row, then that player wins."
 puts "If all squares are filled and neither player has made a complete row of Xs or Os, then the game is a draw."
 puts "In order to make move, you need to choose number from 1 to 9 and each can be choosen only once."
@@ -22,25 +22,51 @@ win_conditions = [
     [3,5,7]
 ]
 
+p1_score = 0
+p2_score = 0
 loop do
-    # create new board
-    board = ['', '', '', '', '', '', '', '', '', '']
-    loop do 
+  # create new board
+    p1 = []
+    p2 = []
+    p1_wins = false
+    p2_wins = false
+    loop do
         puts "#{player1}, what number you choose?"
-        move = gets.chomp
+        p1.push(gets.chomp)
         #store choosen number in board array
-        #if board is full its draw 
-        #if win condition is met we break loop and increment score of player1
+        #if board is full its draw
+        if (p1.length + p2.length) == 9
+          puts "It's a draw!"
+          break
+        elsif win_conditions.each{|x| x == p1.sort} #if win condition is met we break loop and increment score of player1
+          puts "#{player1}, wins!"
+          p1_score += 1
+          p1_wins = true
+          break
+        end
+
         puts "#{player2}, what number you choose?"
-        move = gets.chomp
+        p2.push(gets.chomp)
         #store choosen number in board array
-        #if board is full its draw 
-        #if win condition is met we break loop and increment score of player2
+        #if board is full its draw
+        if (p1.length + p2.length) == 9
+          puts "It's a draw!"
+          break
+        elsif win_conditions.each{|x| x == p2.sort} #if win condition is met we break loop and increment score of player2
+          puts "#{player2}, wins!"
+          p2_score += 1
+          p2_wins = true
+          break
+        end
     end
 
-puts "player# wins, score is 1:0, do you want to play again? y/n"
+if p1_wins
+  puts "#{player1} wins, score is #{p1_score}:#{p2_score}, do you want to play again? y/n"
+else
+  puts "#{player2} wins, score is #{p1_score}:#{p2_score}, do you want to play again? y/n"
+end
 play_again = gets.chomp
+break if play_again = "n"
 #if answer is "y" then we create start loop again
 #if answer is "n" then we break loop and say Goodbye.
 end
-
