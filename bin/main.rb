@@ -30,43 +30,64 @@ loop do
     p2 = []
     p1_wins = false
     p2_wins = false
+    win_met = false
     loop do
+      loop do
         puts "#{player1}, what number you choose?"
-        p1.push(gets.chomp)
+        move = gets.chomp.to_i
+        if p1.include?(move) || p2.include?(move)
+          puts "Wrong move!"
+        else
+          p1.push(move)
+          break
+        end
+      end
         #store choosen number in board array
         #if board is full its draw
-        if (p1.length + p2.length) == 9
-          puts "It's a draw!"
-          break
-        elsif win_conditions.each{|x| x == p1.sort} #if win condition is met we break loop and increment score of player1
+        win_conditions.each{|x| win_met = true if x === p1.sort}
+        if win_met #if win condition is met we break loop and increment score of player1
           puts "#{player1}, wins!"
           p1_score += 1
           p1_wins = true
           break
-        end
-
-        puts "#{player2}, what number you choose?"
-        p2.push(gets.chomp)
-        #store choosen number in board array
-        #if board is full its draw
-        if (p1.length + p2.length) == 9
+        elsif (p1.length + p2.length) == 9
           puts "It's a draw!"
           break
-        elsif win_conditions.each{|x| x == p2.sort} #if win condition is met we break loop and increment score of player2
+        end
+
+        loop do
+          puts "#{player2}, what number you choose?"
+          move = gets.chomp.to_i
+          if p1.include?(move) || p2.include?(move)
+            puts "Wrong move!"
+          else
+            p2.push(move)
+            break
+          end
+        end
+        #store choosen number in board array
+        #if board is full its draw
+        win_conditions.each{|x| win_met = true if x === p2.sort}
+        if win_met #if win condition is met we break loop and increment score of player1
           puts "#{player2}, wins!"
           p2_score += 1
           p2_wins = true
+          break
+        elsif (p1.length + p2.length) == 9
+          puts "It's a draw!"
           break
         end
     end
 
 if p1_wins
   puts "#{player1} wins, score is #{p1_score}:#{p2_score}, do you want to play again? y/n"
-else
+elsif p2_wins
   puts "#{player2} wins, score is #{p1_score}:#{p2_score}, do you want to play again? y/n"
+else
+  puts "The current score is #{p1_score}:#{p2_score}, do you want to play again? y/n"
 end
 play_again = gets.chomp
-break if play_again = "n"
+break if play_again == "n"
 #if answer is "y" then we create start loop again
 #if answer is "n" then we break loop and say Goodbye.
 end
