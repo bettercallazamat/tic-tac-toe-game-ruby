@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # rubocop:disable Metrics/BlockLength
 # rubocop:disable Layout/LineLength
 
