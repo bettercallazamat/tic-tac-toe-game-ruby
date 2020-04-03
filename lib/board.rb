@@ -51,4 +51,56 @@ class Board
 
     false
   end
+
+  def show
+    printed_board = "  |   |  \n----------\n  |   |  \n----------\n  |   |  "
+    i = 1
+    while i < @board.length
+      if @board[i][0] == 1
+        case @board[i][1]
+        when 1
+          printed_board[0] = 'X'
+        when 2
+          printed_board[4] = 'X'
+        when 3
+          printed_board[8] = 'X'
+        when 4
+          printed_board[21] = 'X'
+        when 5
+          printed_board[25] = 'X'
+        when 6
+          printed_board[29] = 'X'
+        when 7
+          printed_board[42] = 'X'
+        when 8
+          printed_board[46] = 'X'
+        when 9
+          printed_board[50] = 'X'
+        end
+      else
+        case @board[i][1]
+        when 1
+          printed_board[0] = 'O'
+        when 2
+          printed_board[4] = 'O'
+        when 3
+          printed_board[8] = 'O'
+        when 4
+          printed_board[21] = 'O'
+        when 5
+          printed_board[25] = 'O'
+        when 6
+          printed_board[29] = 'O'
+        when 7
+          printed_board[42] = 'O'
+        when 8
+          printed_board[46] = 'O'
+        when 9
+          printed_board[50] = 'O'
+        end
+      end
+      i += 1
+    end
+    printed_board
+  end
 end

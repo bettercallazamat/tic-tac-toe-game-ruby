@@ -20,13 +20,13 @@ player2 = Player.new(gets.chomp)
 
 loop do
   board = Board.new
-  winner = nil
   loop do
     loop do
-      puts "#{player1.name}, what number you choose?"
+      print "#{player1.name}, what number you choose: "
       move = gets.chomp.to_i
       if board.valid?([1, move])
         board.update([1, move])
+        puts board.show
         break
       else
         puts 'Wrong move!'
@@ -35,7 +35,6 @@ loop do
     if board.win?
       puts "#{player1.name}, wins!"
       player1.change_score
-      winner = player1.name
       break
     elsif board.draw?
       puts "It's a draw!"
@@ -43,10 +42,11 @@ loop do
     end
 
     loop do
-      puts "#{player2.name}, what number you choose?"
+      print "#{player2.name}, what number you choose: "
       move = gets.chomp.to_i
       if board.valid?([2, move])
         board.update([2, move])
+        puts board.show
         break
       else
         puts 'Wrong move!'
@@ -55,7 +55,6 @@ loop do
     if board.win?
       puts "#{player2.name}, wins!"
       player2.change_score
-      winner = player2.name
       break
     elsif board.draw?
       puts "It's a draw!"
@@ -63,11 +62,8 @@ loop do
     end
   end
 
-  if winner.nil?
-    puts "The current score is #{player1.score}:#{player2.score}, do you want to play again? y/n"
-  else
-    puts "#{winner} wins, score is #{player1.score}:#{player2.score}, do you want to play again? y/n"
-  end
+  puts "The current score is #{player1.score}:#{player2.score}."
+  puts "Type 'n' if you don't want to continue playing, or any input to play again."
   play_again = gets.chomp
   break if play_again == 'n'
 end
