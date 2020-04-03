@@ -1,4 +1,3 @@
-# rubocop:disable Style/CaseEquality
 # rubocop:disable Metrics/BlockLength
 # rubocop:disable Layout/LineLength
 
@@ -26,19 +25,19 @@ loop do
     loop do
       puts "#{player1.name}, what number you choose?"
       move = gets.chomp.to_i
-        if board.valid?([1, move])
-          board.update([1, move])
-          break
-        else
-          puts 'Wrong move!'
-        end
+      if board.valid?([1, move])
+        board.update([1, move])
+        break
+      else
+        puts 'Wrong move!'
+      end
     end
-    if board.win? # if win condition is met we break loop and increment score of player
+    if board.win?
       puts "#{player1.name}, wins!"
       player1.change_score
       winner = player1.name
       break
-    elsif board.draw? # if board is full its draw
+    elsif board.draw?
       puts "It's a draw!"
       break
     end
@@ -53,12 +52,12 @@ loop do
         puts 'Wrong move!'
       end
     end
-    if board.win? # if win condition is met we break loop and increment score of player
+    if board.win?
       puts "#{player2.name}, wins!"
       player2.change_score
       winner = player2.name
       break
-    elsif board.draw? # if board is full its draw
+    elsif board.draw?
       puts "It's a draw!"
       break
     end
@@ -71,9 +70,7 @@ loop do
   end
   play_again = gets.chomp
   break if play_again == 'n'
-  # if answer is "n" then we break loop and say Goodbye.
 end
 
-# rubocop:enable Style/CaseEquality
 # rubocop:enable Metrics/BlockLength
 # rubocop:enable Layout/LineLength
