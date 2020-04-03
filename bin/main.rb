@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # rubocop:disable Style/CaseEquality
 # rubocop:disable Metrics/BlockLength
 # rubocop:disable Layout/LineLength
