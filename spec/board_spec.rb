@@ -4,25 +4,25 @@ require './lib/board.rb'
 RSpec.describe Board do
   let(:board) { Board.new }
   describe '.valid?' do
-    context "when user gives input" do
-      it "returns true if this input is in range of 1..9 and this input is not taken" do
+    context 'when user gives input' do
+      it 'returns true if this input is in range of 1..9 and this input is not taken' do
         expect(board.valid?([1, 2])).to eq true
       end
 
-      it "returns false if this input is taken" do
+      it 'returns false if this input is taken' do
         board.update([1, 2])
         expect(board.valid?([1, 2])).to eq false
       end
 
-      it "returns false if this input is not in range of 1..9" do
+      it 'returns false if this input is not in range of 1..9' do
         expect(board.valid?([1, 12])).to eq false
       end
     end
   end
 
   describe '.update' do
-    context "when input is valid" do
-      it "push input to board" do
+    context 'when input is valid' do
+      it 'push input to board' do
         board.update([1, 2])
         expect(board.board.length).to eq 2
       end
@@ -30,8 +30,8 @@ RSpec.describe Board do
   end
 
   describe '.win?' do
-    context "when win condition is met" do
-      it "returns true" do
+    context 'when win condition is met' do
+      it 'returns true' do
         board.update([1, 1])
         board.update([1, 2])
         board.update([1, 3])
@@ -41,8 +41,8 @@ RSpec.describe Board do
   end
 
   describe '.draw?' do
-    context "when draw condition is met" do
-      it "returns true" do
+    context 'when draw condition is met' do
+      it 'returns true' do
         board.update([1, 1])
         board.update([2, 2])
         board.update([1, 3])
@@ -58,8 +58,8 @@ RSpec.describe Board do
   end
 
   describe '.show' do
-    context "when player one gives an input of 1" do
-      it "returns a string displaying the board with an X on the first position" do
+    context 'when player one gives an input of 1' do
+      it 'returns a string displaying the board with an X on the first position' do
         board.update([1, 1])
         expect(board.show).to eq "X |   |  \n----------\n  |   |  \n----------\n  |   |  "
       end
