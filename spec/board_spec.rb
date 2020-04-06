@@ -10,7 +10,7 @@ RSpec.describe Board do
       end
 
       it 'returns false if this input is taken' do
-        board.update([1, 2])
+        board.board.push([1, 2])
         expect(board.valid?([1, 2])).to eq false
       end
 
