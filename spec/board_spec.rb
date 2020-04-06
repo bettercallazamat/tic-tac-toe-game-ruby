@@ -38,6 +38,14 @@ RSpec.describe Board do
         expect(board.win?).to eq true
       end
     end
+    context 'when win condition is not met' do
+      it 'returns false' do
+        board.update([1, 3])
+        board.update([1, 4])
+        board.update([1, 6])
+        expect(board.win?).to eq false
+      end
+    end
   end
 
   describe '.draw?' do
