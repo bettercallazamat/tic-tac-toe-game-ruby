@@ -64,7 +64,7 @@ RSpec.describe Board do
   describe '.show' do
     context 'when player one gives an input of 1' do
       it 'returns a string displaying the board with an X on the first position' do
-        board.update([1, 1])
+        board.board.push([1, 1])
         expect(board.show).to eq "X |   |  \n----------\n  |   |  \n----------\n  |   |  "
       end
     end
