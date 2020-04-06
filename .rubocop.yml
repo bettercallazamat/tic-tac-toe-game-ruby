@@ -1,13 +1,11 @@
 AllCops:
+  EnabledByDefault: true
   Exclude:
     - "README.md"
     - "Guardfile"
     - "Rakefile"
 
   DisplayCopNames: true
-
-Style:
-  Enabled: false
 
 Layout/LineLength:
   Max: 120
@@ -34,6 +32,8 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
 Style/Copyright:
   Enabled: false
 Style/DocumentationMethod:
@@ -42,8 +42,14 @@ Style/MissingElse:
   Enabled: false
 
 
+Layout/HashAlignment:
+  EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+
+
+Lint/NumberConversion:
+  Enabled: false
