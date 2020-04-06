@@ -6,6 +6,9 @@ AllCops:
 
   DisplayCopNames: true
 
+AllCops:
+  EnabledByDefault: true
+
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
@@ -31,6 +34,12 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/Copyright:
+  Enabled: false
+Style/DocumentationMethod:
+  Enabled: false
+Style/MissingElse:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
