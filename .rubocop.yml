@@ -41,8 +41,7 @@ Style/DocumentationMethod:
 Style/MissingElse:
   Enabled: false
 
-Layout/HashAlignment:
-  EnforcedColonStyle: key
+
 Layout/ExtraSpacing:
   AllowForAlignment: false
 Layout/MultilineMethodCallIndentation:
