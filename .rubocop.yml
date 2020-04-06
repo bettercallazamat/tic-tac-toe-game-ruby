@@ -6,8 +6,8 @@ AllCops:
 
   DisplayCopNames: true
 
-Style:
-  Enabled: false
+AllCops:
+  EnabledByDefault: true
 
 Layout/LineLength:
   Max: 120
