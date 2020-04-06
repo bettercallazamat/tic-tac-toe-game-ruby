@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # rubocop:disable Metrics/BlockLength
-# rubocop:disable Metrics/LineLength
+# rubocop:disable Layout/LineLength
 
 require_relative '../lib/player.rb'
 require_relative '../lib/board.rb'
@@ -70,4 +70,4 @@ loop do
 end
 
 # rubocop:enable Metrics/BlockLength
-# rubocop:enable Metrics/LineLength
+# rubocop:enable Layout/LineLength
