@@ -29,7 +29,7 @@ class Board
 
   def valid?(input)
     valid = true
-    if (1..9).include?(input[1])
+    if (1..9).cover?(input[1])
       @board.each { |x| valid = false unless x[1] != input[1] }
     else
       valid = false
