@@ -32,17 +32,14 @@ RSpec.describe Board do
   describe '.win?' do
     context 'when win condition is met' do
       it 'returns true' do
-        board.update([1, 1])
-        board.update([1, 2])
-        board.update([1, 3])
+        board.board.push([1, 1], [1, 2], [1, 3])
         expect(board.win?).to eq true
       end
     end
+
     context 'when win condition is not met' do
       it 'returns false' do
-        board.update([1, 3])
-        board.update([1, 4])
-        board.update([1, 6])
+        board.board.push([1, 3], [1, 4], [1, 6])
         expect(board.win?).to eq false
       end
     end
@@ -51,16 +48,15 @@ RSpec.describe Board do
   describe '.draw?' do
     context 'when draw condition is met' do
       it 'returns true' do
-        board.update([1, 1])
-        board.update([2, 2])
-        board.update([1, 3])
-        board.update([2, 9])
-        board.update([1, 4])
-        board.update([1, 5])
-        board.update([2, 6])
-        board.update([1, 7])
-        board.update([2, 8])
+        board.board.push([1, 1], [2, 2], [1, 3], [2, 9], [1, 4], [1, 5], [2, 6], [1, 7], [2, 8])
         expect(board.draw?).to eq true
+      end
+    end
+
+    context 'when draw condition is met' do
+      it 'returns true' do
+        board.board.push([1, 1], [2, 2], [1, 3], [2, 9], [1, 4], [1, 5], [2, 6], [1, 7])
+        expect(board.draw?).to eq false
       end
     end
   end
