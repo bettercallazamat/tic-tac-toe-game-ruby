@@ -11,4 +11,13 @@ RSpec.describe Player do
       end
     end
   end
+
+  describe '.initialize' do
+    context 'when new Player instance is created' do
+      it 'expects to receive string representing the name' do
+        player = Player.new('name')
+        expect(player.name.class).to eq String
+      end
+    end
+  end
 end
