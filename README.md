@@ -36,15 +36,15 @@ If all squares are filled and neither player has made a complete row of Xs or Os
 
 👤 **Isaac Gonzalez**
 
-- Github: [@ghamtre](https://github.com/ghamtre)
+- Github: [@idgm5](https://github.com/idgm5)
 - Twitter: [@idgm5](https://twitter.com/idgm5)
-- Linkedin: [linkedin](https://www.linkedin.com/in/isaacmunguia)
+- Linkedin: [Isaac Gonzalez](https://www.linkedin.com/in/isaacmunguia)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to submit a new suggestion > [issues page](issues/).
+Feel free to submit a new suggestion in [issues page](issues/).
 
 ## Show your support
 
